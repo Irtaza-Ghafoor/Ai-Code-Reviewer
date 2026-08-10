@@ -6,10 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def analyze_code(code_text, language, persona):
-    # Yeh local aur live dono ke liye smart check hai (chahe GROQ ho ya GEMINI)
     api_key = None
     
-    # 1. Pehle Streamlit Cloud secrets check karega
     try:
         if "GROQ_API_KEY" in st.secrets:
             api_key = st.secrets["GROQ_API_KEY"]
@@ -18,19 +16,20 @@ def analyze_code(code_text, language, persona):
     except Exception:
         pass
 
-    # 2. Agar wahan na mile toh local .env se utha lega
     if not api_key:
         api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
 
     if not api_key:
         return "Error: API key not found. Please check your .env file or Streamlit secrets."
 
+    # Yeh line kisi bhi extra space ya hidden newline ko foran saaf kar degi!
+    api_key = api_key.strip()
+
     try:
         client = Groq(api_key=api_key)
     except Exception as e:
         return f"Error initializing Groq client: {str(e)}"
     
-    # Dynamic system prompt based on user's selected persona
     persona_prompts = {
         "Strict Security Auditor": "You are a paranoid Chief Information Security Officer (CISO). Focus heavily on vulnerabilities, SQL injections, hardcoded secrets, and data leaks.",
         "Performance Expert": "You are a Senior Performance & Systems Engineer. Focus primarily on time complexity, memory leaks, and execution speed bottlenecks.",
