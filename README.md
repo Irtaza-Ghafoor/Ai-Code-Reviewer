@@ -33,7 +33,7 @@ An enterprise-grade, multi-language code review and security auditing web applic
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/Irtaza-Ghafoor/Ai-Code-Reviewer.git
-cd Ai-Code-Reviewer
+cd Ai-Code-Reviewer ```
 2. Install Dependencies
 Bash
 pip install -r requirements.txt
