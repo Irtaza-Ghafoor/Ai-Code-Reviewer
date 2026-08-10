@@ -6,16 +6,21 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def analyze_code(code_text, language, persona):
-    # Safe tarika: pehle Streamlit secrets check karega, agar na mile toh .env se utha lega
+    # Yeh local aur live dono ke liye smart check hai (chahe GROQ ho ya GEMINI)
     api_key = None
+    
+    # 1. Pehle Streamlit Cloud secrets check karega
     try:
         if "GROQ_API_KEY" in st.secrets:
             api_key = st.secrets["GROQ_API_KEY"]
+        elif "GEMINI_API_KEY" in st.secrets:
+            api_key = st.secrets["GEMINI_API_KEY"]
     except Exception:
         pass
 
+    # 2. Agar wahan na mile toh local .env se utha lega
     if not api_key:
-        api_key = os.getenv("GROQ_API_KEY")
+        api_key = os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")
 
     if not api_key:
         return "Error: API key not found. Please check your .env file or Streamlit secrets."
