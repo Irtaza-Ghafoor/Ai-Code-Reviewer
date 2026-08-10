@@ -37,17 +37,17 @@ cd Ai-Code-Reviewer
 ```
 
 1.Install Dependencies:
-pip install -r requirements.txt
+  pip install -r requirements.txt
 
 2.Set Up Environment Variables:
-Create a .env file and add:
-GROQ_API_KEY=your_groq_api_key_here
+ Create a .env file and add:
+ GROQ_API_KEY=your_groq_api_key_here
 
 
 3.Run the Application:
-streamlit run app.py
+  streamlit run app.py
 
 
 Author: Irtaza Ahmed
-AI/ML Engineer & Computer Science Student
+        AI/ML Engineer & Computer Science Student
 
