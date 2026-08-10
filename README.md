@@ -36,19 +36,17 @@ git clone [https://github.com/Irtaza-Ghafoor/Ai-Code-Reviewer.git](https://githu
 cd Ai-Code-Reviewer
 ```
 
-2. Install Dependencies
-Bash
+1. **Install Dependencies**
 pip install -r requirements.txt
-3. Set Up Environment Variables
+
+2. **Set Up Environment Variables**
 Create a .env file in the root directory and add:
-
-Code snippet
 GROQ_API_KEY=your_groq_api_key_here
-4. Run the Application
-Bash
-streamlit run app.py
-👨‍💻 Author
-Irtaza Ahmed
 
+4. **Run the Application**
+streamlit run app.py
+
+**👨‍💻 Author**
+Irtaza Ahmed
 AI/ML Engineer & Computer Science Student
 
