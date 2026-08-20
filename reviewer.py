@@ -22,7 +22,6 @@ def analyze_code(code_text, language, persona):
     if not api_key:
         return "Error: API key not found. Please check your .env file or Streamlit secrets."
 
-    # Yeh line kisi bhi extra space ya hidden newline ko foran saaf kar degi!
     api_key = api_key.strip()
 
     try:
@@ -57,7 +56,7 @@ def analyze_code(code_text, language, persona):
     try:
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-20b",  # UPDATED ACTIVE MODEL
         )
         return chat_completion.choices[0].message.content
     except Exception as e:
